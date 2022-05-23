@@ -32,7 +32,6 @@ import { MiAppRoutingModule } from './cmp03-componentes-dinamicos/app.routes';
   ],
   imports: [
     BrowserModule,
-    //AppRoutingModule,
     //MiRouterModule,
     MiAppRoutingModule
   ],
