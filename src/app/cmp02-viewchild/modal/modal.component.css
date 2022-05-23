@@ -1,0 +1,7 @@
+#modal {
+  border: 1px solid black;
+  position: absolute;
+  box-shadow: 10 px 10px 10px black;
+  margin: 0 auto;
+  width: 50%;
+}
