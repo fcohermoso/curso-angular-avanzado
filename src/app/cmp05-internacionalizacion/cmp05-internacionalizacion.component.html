@@ -1,6 +1,6 @@
 
-<select [(ngModel)]="lenguajeSeleccionado" (change)="cambioIdioma($event)">
-  <option *ngFor="let lang of listaLang" [value]="lang">
+<select (change)="cambioIdioma($event)">
+  <option *ngFor="let lang of listaLang" [value]="lang" [selected]="lang === lenguajeSeleccionado">
     {{ 'CMP05.SELECT.' + lang | translate}}
   </option>
 </select>
@@ -9,6 +9,6 @@
 <h1>{{ 'CMP05.titulo' | translate}}</h1>
 
 <p>{{ 'CMP05.hola' | translate}}</p>
-<p>{{ 'CMP05.precio' | translate}}: 3</p>
-<p>{{ 'CMP05.fecha' | translate}}: 23/05/22</p>
+<p>{{ 'CMP05.precio' | translate}}: {{ precio | currency:'EUR':undefined:undefined:lenguajeSeleccionado}}</p>
+<p>{{ 'CMP05.fecha' | translate}}: {{ fecha | date:'medium':undefined:lenguajeSeleccionado}}</p>
 

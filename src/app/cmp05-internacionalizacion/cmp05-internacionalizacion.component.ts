@@ -10,6 +10,8 @@ export class Cmp05InternacionalizacionComponent implements OnInit {
 
   listaLang: string[] = ['es', 'en'];
   lenguajeSeleccionado: string;
+  precio: number = 3;
+  fecha = new Date();
 
   constructor(
     private translateService: TranslateService
