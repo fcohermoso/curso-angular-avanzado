@@ -16,6 +16,18 @@ import { NuevoItemComponent } from './cmp03-componentes-dinamicos/nuevo-item/nue
 import { MiRouterModule } from './cmp03-componentes-dinamicos/mi-router/mi-router.module';
 import { MiAppRoutingModule } from './cmp03-componentes-dinamicos/app.routes';
 import { Cmp04LazyLoadingComponent } from './cmp04-lazy-loading/cmp04-lazy-loading.component';
+import { Cmp05InternacionalizacionComponent } from './cmp05-internacionalizacion/cmp05-internacionalizacion.component';
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
+import localeEs from '@angular/common/locales/es';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+const httpLoaderFactory = (http: HttpClient) => {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -30,15 +42,31 @@ import { Cmp04LazyLoadingComponent } from './cmp04-lazy-loading/cmp04-lazy-loadi
     HostDirective,
     InicioComponent,
     NuevoItemComponent,
-    Cmp04LazyLoadingComponent
+    Cmp04LazyLoadingComponent,
+    Cmp05InternacionalizacionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     //MiRouterModule,
-    MiAppRoutingModule
+    MiAppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'es',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(localeEn, 'en');
+    registerLocaleData(localeEs, 'es');
+  }
+}
