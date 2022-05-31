@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Cmp06AnimacionesComponent } from './cmp06-animaciones/cmp06-animaciones.component';
+import { ZoomComponent } from './cmp06-animaciones/zoom/zoom.component';
+import { ShakeComponent } from './cmp06-animaciones/shake/shake.component';
 
 const httpLoaderFactory = (http: HttpClient) => {
   return new TranslateHttpLoader(http);
@@ -43,7 +47,10 @@ const httpLoaderFactory = (http: HttpClient) => {
     InicioComponent,
     NuevoItemComponent,
     Cmp04LazyLoadingComponent,
-    Cmp05InternacionalizacionComponent
+    Cmp05InternacionalizacionComponent,
+    Cmp06AnimacionesComponent,
+    ZoomComponent,
+    ShakeComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,7 @@ const httpLoaderFactory = (http: HttpClient) => {
     MiAppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es',
       loader: {
